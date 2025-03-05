@@ -1,0 +1,40 @@
+.buttons-div button{
+    margin: 0px;
+    border-radius: 0px;
+    width: 15%;
+}
+
+.buttons-div .login-button {
+    border-top-left-radius: 12px;
+}
+
+.buttons-div .signup-button {
+    border-top-right-radius: 12px;
+}
+
+
+.form-container {
+    display: flex;
+    justify-content: center;
+}
+
+.form-div{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    background-color: rgb(75, 75, 127);
+    border-radius: 12px;
+}
+
+.fields-div{
+    display: flex;
+    padding: 4%;
+    flex-direction: column;
+    text-align: left;
+}
+
+.form-div button{
+    width: 50%;
+    align-self: center;
+    margin-bottom: 3%;
+}
