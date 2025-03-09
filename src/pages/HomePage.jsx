@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { generateClient } from 'aws-amplify/api';
 import { listGames } from '../graphql/queries';
 import { useNavigate } from 'react-router-dom';
+import GameCard from '../components/GameCard/GameCard';
 
 const HomePage = ({ email, logout }) => {
     const navigate = useNavigate();
@@ -34,7 +35,7 @@ const HomePage = ({ email, logout }) => {
 
             {games.length > 0 ? (
                 games.map((game) => (
-                    <div key={game.id}>{game.name}</div>
+                    <GameCard key={game.id} game={game} />
                 ))
             ) : (
                 <p>Loading games...</p>
