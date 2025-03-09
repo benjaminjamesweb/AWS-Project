@@ -1,41 +1,49 @@
-import React, { useEffect } from 'react'
-// import { API, graphqlOperation } from 'aws-amplify';
-import { createGame } from '/src/graphql/mutations';
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { generateClient } from 'aws-amplify/api';
+import { listGames } from '../graphql/queries';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = ({ email, logout }) => {
-
-    const navigate = useNavigate()
-
-    console.log(email)
-
-    const game1 = { name: 'Game name', description: 'Hello world!', image: 'image', levels: ['level'] };
+    const navigate = useNavigate();
+    const [games, setGames] = useState([]);
 
     useEffect(() => {
-        const createGameAsync = async () => {
-            try {
-                await API.graphql(graphqlOperation(createGame, { input: game1 }));
-                console.log('Game created successfully');
-            } catch (error) {
-                console.error('Error creating game:', error);
+        const fetchGames = async () => {
+            const client = generateClient();
+
+            const result = await client.graphql({ query: listGames });
+            console.log(result);
+
+            if (result.errors) {
+                console.error(result.errors);
+                return;
+            }
+
+            if (result.data && result.data.listGames && result.data.listGames.items) {
+                setGames(result.data.listGames.items);
             }
         };
 
-        createGameAsync();
-    }, []); 
-
+        fetchGames();
+    }, []);
 
     return (
         <div className='homepage-container'>
             <h1>Home page</h1>
             <div>{email}</div>
 
-            
+            {games.length > 0 ? (
+                games.map((game) => (
+                    <div key={game.id}>{game.name}</div>
+                ))
+            ) : (
+                <p>Loading games...</p>
+            )}
+
             <button onClick={logout}>Log out</button>
-
-            <button onClick={() => navigate('/welcome')}>(nav btn)</button>
+            <button onClick={() => navigate('/welcome')}>Navigate</button>
         </div>
-    )
-}
+    );
+};
 
-export default HomePage
+export default HomePage;
