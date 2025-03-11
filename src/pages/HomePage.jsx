@@ -3,6 +3,8 @@ import { generateClient } from 'aws-amplify/api';
 import { listGames } from '../graphql/queries';
 import { useNavigate } from 'react-router-dom';
 import GameCard from '../components/GameCard/GameCard';
+import './styles/HomePage.css'
+import Header from '../components/Header/Header';
 
 const HomePage = ({ email, logout }) => {
     const navigate = useNavigate();
@@ -30,19 +32,17 @@ const HomePage = ({ email, logout }) => {
 
     return (
         <div className='homepage-container'>
-            <h1>Home page</h1>
-            <div>{email}</div>
+            <Header email={email} logout={logout}/>
 
+            <div className='games-div'> 
             {games.length > 0 ? (
-                games.map((game) => (
-                    <GameCard key={game.id} game={game} />
-                ))
-            ) : (
-                <p>Loading games...</p>
-            )}
-
-            <button onClick={logout}>Log out</button>
-            <button onClick={() => navigate('/welcome')}>Navigate</button>
+                    games.map((game) => (
+                        <GameCard key={game.id} game={game} />
+                    ))
+                ) : (
+                    <p>Loading games...</p>
+                )}
+            </div>
         </div>
     );
 };

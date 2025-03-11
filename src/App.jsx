@@ -4,6 +4,7 @@ import './App.css'
 import HomePage from './pages/HomePage';
 import LandingPage from './pages/LandingPage';
 import {withAuthenticator} from "@aws-amplify/ui-react"
+import GamePage from './pages/GamePage';
 
 function App({ signOut, user }) {
 
@@ -15,6 +16,9 @@ function App({ signOut, user }) {
     },
     { path: '/welcome',
       element: <LandingPage />
+    },
+    { path: '/:gameid',
+      element: <GamePage logout={signOut} email={user.signInDetails.loginId}/>
     }
   ])
 

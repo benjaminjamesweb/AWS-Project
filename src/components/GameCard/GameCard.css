@@ -1,5 +1,45 @@
-.gamecard-div img{
-    width: 200px;
-    height: 200px;
+.gamecard-div {
+    background-color: rgb(36, 36, 36);
+    margin: 4%;
+    border-radius: 12px;
+    transition: background-color 0.3s ease;
+}
 
+.gamecard-div:hover {
+    background-color: rgb(0, 0, 0);
+}
+
+.gamecard-div h1{
+    font-size: 2.8em;
+}
+
+
+.gamecard-div img{
+    width: 80%;
+    height: 20px;
+    object-fit: cover;
+}
+
+select {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 12px;
+    background-color: rgb(66, 126, 204);
+    margin-bottom: 8px;
+    border: none;
+  }
+
+.message-div h2{
+    margin-bottom: 0px
+}
+
+.message-div button{
+    padding: 12px;
+    font-size: 1.4em;
+    margin: 12px;
+    background-color: rgb(36, 63, 36);
+}
+
+.message-div button:hover{
+    background-color: rgb(51, 141, 51);
 }

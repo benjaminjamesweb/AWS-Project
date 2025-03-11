@@ -1,0 +1,21 @@
+.header-div {
+    background-color: rgb(37, 34, 59);
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 40px 0px  40px ;
+    height: 9%;
+}
+
+
+.header-div button{
+    height: 100%;
+    border-radius: 0px;
+    background-color: rgb(37, 34, 59);
+    font-size: 1.3em;
+}
+
+.header-div button:hover{
+    background-color: rgb(58, 51, 109);
+}
