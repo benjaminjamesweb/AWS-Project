@@ -1,0 +1,18 @@
+{
+  "resourceName": "animations",
+  "policyUUID": "e4ac5823",
+  "bucketName": "awsproject8323bb13017a4477bcd0711301be9dc2",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
