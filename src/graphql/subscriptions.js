@@ -43,3 +43,57 @@ export const onDeleteGame = /* GraphQL */ `
     }
   }
 `;
+export const onCreateGameplay = /* GraphQL */ `
+  subscription OnCreateGameplay($filter: ModelSubscriptionGameplayFilterInput) {
+    onCreateGameplay(filter: $filter) {
+      id
+      gameid
+      proficiency
+      q1
+      a1
+      q2
+      a2
+      q3
+      a3
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateGameplay = /* GraphQL */ `
+  subscription OnUpdateGameplay($filter: ModelSubscriptionGameplayFilterInput) {
+    onUpdateGameplay(filter: $filter) {
+      id
+      gameid
+      proficiency
+      q1
+      a1
+      q2
+      a2
+      q3
+      a3
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteGameplay = /* GraphQL */ `
+  subscription OnDeleteGameplay($filter: ModelSubscriptionGameplayFilterInput) {
+    onDeleteGameplay(filter: $filter) {
+      id
+      gameid
+      proficiency
+      q1
+      a1
+      q2
+      a2
+      q3
+      a3
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;

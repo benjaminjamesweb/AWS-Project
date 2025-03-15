@@ -1,7 +1,7 @@
 import { generateClient } from 'aws-amplify/api';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
-import { getGame } from '../graphql/queries';
+import { getGame, getGameplay, listGameplays } from '../graphql/queries';
 import Header from '../components/Header/Header';
 import './styles/GamePage.css'
 
@@ -9,6 +9,7 @@ const GamePage = ({ email, logout }) => {
   const { gameid } = useParams(); 
   const [selectedLevel, setSelectedLevel] = useState("");
   const [game, setGame] = useState(null);
+  const [gameplay, setGameplay] = useState(null)
   const [loading, setLoading] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false)
 
@@ -28,24 +29,21 @@ const GamePage = ({ email, logout }) => {
   }
 
   useEffect(() => {
+    if (!gameid) return; // Prevents API call if gameid is null
+  
     const fetchGame = async () => {
       const client = generateClient();
-
+  
       try {
         const result = await client.graphql({
           query: getGame,
-          variables: { id: gameid } 
+          variables: { id: gameid } // Ensure id is always provided
         });
-
-        if (result.errors) {
-          console.error(result.errors);
-          return;
-        }
-
+  
         if (result.data?.getGame) {
           setGame(result.data.getGame);
         } else {
-          console.log("Error")
+          console.error("Game not found");
         }
       } catch (err) {
         console.error("GraphQL error:", err);
@@ -53,11 +51,53 @@ const GamePage = ({ email, logout }) => {
         setLoading(false);
       }
     };
-
+  
     fetchGame();
   }, [gameid]);
+  
+
+  useEffect(() => {
+    if (!gameid) return; // Prevents API call if gameid is null
+  
+    const fetchGameplay = async () => {
+      const client = generateClient();
+  
+      try {
+        const result = await client.graphql({
+          query: listGameplays, // Fetch ALL gameplay data
+        });
+  
+        console.log("GraphQL Response:", result); // Debugging
+  
+        if (result.data?.listGameplays?.items.length > 0) {
+          // Filter gameplay manually by gameid
+          const filteredGameplay = result.data.listGameplays.items.find(
+            (gameplay) => gameplay.gameid === gameid
+          );
+  
+          if (filteredGameplay) {
+            setGameplay(filteredGameplay);
+          } else {
+            console.error("No gameplay found for this gameid.");
+          }
+        } else {
+          console.error("No gameplay data available.");
+        }
+      } catch (err) {
+        console.error("GraphQL error:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    fetchGameplay();
+  }, [gameid]);
+  
+  
+  
 
   if (loading) return <p>Loading game details...</p>;
+if (!game) return <p>Error: Game not found.</p>;
 
   return (
     <div className='gamepage-container'>
@@ -95,7 +135,7 @@ const GamePage = ({ email, logout }) => {
     <div className='gameplay-div'>
         {!isPlaying && (
             <>
-                <h2 style={{ marginTop: "25%" }}>Choose your proficiency level, and click Play!</h2>
+                <h2 style={{ marginTop: "25%" }}>{gameplay?.q1}</h2>
             </>
         )}
 

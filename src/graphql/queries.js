@@ -37,3 +37,47 @@ export const listGames = /* GraphQL */ `
     }
   }
 `;
+export const getGameplay = /* GraphQL */ `
+  query GetGameplay($id: ID!) {
+    getGameplay(id: $id) {
+      id
+      gameid
+      proficiency
+      q1
+      a1
+      q2
+      a2
+      q3
+      a3
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const listGameplays = /* GraphQL */ `
+  query ListGameplays(
+    $filter: ModelGameplayFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listGameplays(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        gameid
+        proficiency
+        q1
+        a1
+        q2
+        a2
+        q3
+        a3
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;

@@ -8,6 +8,20 @@ type Game {
   updatedAt: AWSDateTime!
 }
 
+type Gameplay {
+  id: ID!
+  gameid: String!
+  proficiency: String!
+  q1: String
+  a1: [String]
+  q2: String
+  a2: [String]
+  q3: String
+  a3: [String]
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
 input ModelStringInput {
   ne: String
   eq: String
@@ -179,6 +193,8 @@ input ModelGameFilterInput {
 type Query {
   getGame(id: ID!): Game
   listGames(filter: ModelGameFilterInput, limit: Int, nextToken: String): ModelGameConnection
+  getGameplay(id: ID!): Gameplay
+  listGameplays(filter: ModelGameplayFilterInput, limit: Int, nextToken: String): ModelGameplayConnection
 }
 
 input ModelGameConditionInput {
@@ -217,6 +233,9 @@ type Mutation {
   createGame(input: CreateGameInput!, condition: ModelGameConditionInput): Game
   updateGame(input: UpdateGameInput!, condition: ModelGameConditionInput): Game
   deleteGame(input: DeleteGameInput!, condition: ModelGameConditionInput): Game
+  createGameplay(input: CreateGameplayInput!, condition: ModelGameplayConditionInput): Gameplay
+  updateGameplay(input: UpdateGameplayInput!, condition: ModelGameplayConditionInput): Gameplay
+  deleteGameplay(input: DeleteGameplayInput!, condition: ModelGameplayConditionInput): Gameplay
 }
 
 input ModelSubscriptionGameFilterInput {
@@ -235,4 +254,89 @@ type Subscription {
   onCreateGame(filter: ModelSubscriptionGameFilterInput): Game @aws_subscribe(mutations: ["createGame"])
   onUpdateGame(filter: ModelSubscriptionGameFilterInput): Game @aws_subscribe(mutations: ["updateGame"])
   onDeleteGame(filter: ModelSubscriptionGameFilterInput): Game @aws_subscribe(mutations: ["deleteGame"])
+  onCreateGameplay(filter: ModelSubscriptionGameplayFilterInput): Gameplay @aws_subscribe(mutations: ["createGameplay"])
+  onUpdateGameplay(filter: ModelSubscriptionGameplayFilterInput): Gameplay @aws_subscribe(mutations: ["updateGameplay"])
+  onDeleteGameplay(filter: ModelSubscriptionGameplayFilterInput): Gameplay @aws_subscribe(mutations: ["deleteGameplay"])
+}
+
+type ModelGameplayConnection {
+  items: [Gameplay]!
+  nextToken: String
+}
+
+input ModelGameplayFilterInput {
+  id: ModelIDInput
+  gameid: ModelStringInput
+  proficiency: ModelStringInput
+  q1: ModelStringInput
+  a1: ModelStringInput
+  q2: ModelStringInput
+  a2: ModelStringInput
+  q3: ModelStringInput
+  a3: ModelStringInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  and: [ModelGameplayFilterInput]
+  or: [ModelGameplayFilterInput]
+  not: ModelGameplayFilterInput
+}
+
+input ModelGameplayConditionInput {
+  gameid: ModelStringInput
+  proficiency: ModelStringInput
+  q1: ModelStringInput
+  a1: ModelStringInput
+  q2: ModelStringInput
+  a2: ModelStringInput
+  q3: ModelStringInput
+  a3: ModelStringInput
+  and: [ModelGameplayConditionInput]
+  or: [ModelGameplayConditionInput]
+  not: ModelGameplayConditionInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+}
+
+input CreateGameplayInput {
+  id: ID
+  gameid: String!
+  proficiency: String!
+  q1: String
+  a1: [String]
+  q2: String
+  a2: [String]
+  q3: String
+  a3: [String]
+}
+
+input UpdateGameplayInput {
+  id: ID!
+  gameid: String
+  proficiency: String
+  q1: String
+  a1: [String]
+  q2: String
+  a2: [String]
+  q3: String
+  a3: [String]
+}
+
+input DeleteGameplayInput {
+  id: ID!
+}
+
+input ModelSubscriptionGameplayFilterInput {
+  id: ModelSubscriptionIDInput
+  gameid: ModelSubscriptionStringInput
+  proficiency: ModelSubscriptionStringInput
+  q1: ModelSubscriptionStringInput
+  a1: ModelSubscriptionStringInput
+  q2: ModelSubscriptionStringInput
+  a2: ModelSubscriptionStringInput
+  q3: ModelSubscriptionStringInput
+  a3: ModelSubscriptionStringInput
+  createdAt: ModelSubscriptionStringInput
+  updatedAt: ModelSubscriptionStringInput
+  and: [ModelSubscriptionGameplayFilterInput]
+  or: [ModelSubscriptionGameplayFilterInput]
 }

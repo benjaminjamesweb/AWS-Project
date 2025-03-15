@@ -42,7 +42,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-awsproject-dev-29bad-deployment/amplify-cfn-templates/auth/awsproject3584bfb3-cloudformation-template.json",
         "logicalId": "authawsproject3584bfb3"
       },
-      "lastPushTimeStamp": "2025-03-09T07:42:22.981Z",
+      "lastPushTimeStamp": "2025-03-11T20:55:59.878Z",
       "output": {
         "UserPoolId": "us-west-2_LpHrTCPw6",
         "AppClientIDWeb": "1qaub6q5erjj66haojgod9i1j9",
@@ -65,7 +65,9 @@
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 7
+              "apiKeyExpirationDays": 7,
+              "apiKeyExpirationDate": "2025-03-18T20:43:00.777Z",
+              "description": ""
             }
           },
           "additionalAuthenticationProviders": []
@@ -78,8 +80,8 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-awsproject-dev-29bad-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apiawsproject"
       },
-      "lastPushTimeStamp": "2025-03-09T07:42:22.211Z",
-      "lastPushDirHash": "g6Y3/BAaB/q9qhNaloZppWxjAh0="
+      "lastPushTimeStamp": "2025-03-11T20:56:02.069Z",
+      "lastPushDirHash": "vNb+CyePzFFtzZ55GbxFWiv4GEI="
     }
   },
   "storage": {
@@ -87,7 +89,7 @@
       "service": "S3",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
-      "lastPushTimeStamp": "2025-03-09T07:42:22.981Z",
+      "lastPushTimeStamp": "2025-03-11T20:55:59.904Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-awsproject-dev-29bad-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
         "logicalId": "storageanimations"

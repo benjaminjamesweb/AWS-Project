@@ -9,3 +9,15 @@ type Game @model {
   image: String
   levels: [String]
 }
+
+type Gameplay @model {
+  id: ID!
+  gameid: String!
+  proficiency: String!
+  q1: String
+  a1: [String]
+  q2: String
+  a2: [String]
+  q3: String
+  a3: [String]
+}

@@ -1156,6 +1156,38 @@
           ]
         }
       }
+    },
+    "transformerrootstackGameQuerygetGamepostAuth0FunctionQuerygetGamepostAuth0FunctionAppSyncFunction1E1E94D9FunctionId": {
+      "Value": {
+        "Fn::GetAtt": [
+          "QuerygetGamepostAuth0FunctionQuerygetGamepostAuth0FunctionAppSyncFunctionD8F9197E",
+          "FunctionId"
+        ]
+      }
+    },
+    "transformerrootstackGameMutationcreateGameinit0FunctionMutationcreateGameinit0FunctionAppSyncFunction7BC8B0B0FunctionId": {
+      "Value": {
+        "Fn::GetAtt": [
+          "MutationcreateGameinit0FunctionMutationcreateGameinit0FunctionAppSyncFunction33FD0F89",
+          "FunctionId"
+        ]
+      }
+    },
+    "transformerrootstackGameMutationupdateGameinit0FunctionMutationupdateGameinit0FunctionAppSyncFunctionB4650593FunctionId": {
+      "Value": {
+        "Fn::GetAtt": [
+          "MutationupdateGameinit0FunctionMutationupdateGameinit0FunctionAppSyncFunction40DE0D18",
+          "FunctionId"
+        ]
+      }
+    },
+    "transformerrootstackGameSubscriptionOnCreateGameDataResolverFnSubscriptionOnCreateGameDataResolverFnAppSyncFunction8A40F0DDFunctionId": {
+      "Value": {
+        "Fn::GetAtt": [
+          "SubscriptionOnCreateGameDataResolverFnSubscriptionOnCreateGameDataResolverFnAppSyncFunctionA06CAF99",
+          "FunctionId"
+        ]
+      }
     }
   }
 }

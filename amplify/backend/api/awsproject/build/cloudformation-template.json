@@ -111,7 +111,7 @@
                         "ApiId"
                     ]
                 },
-                "Expires": 1742110638
+                "Expires": 1742331220
             }
         },
         "GraphQLAPINONEDS95A13CF0": {
@@ -198,6 +198,94 @@
                 "GraphQLAPITransformerSchema3CB2AE18"
             ]
         },
+        "Gameplay": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "Parameters": {
+                    "DynamoDBModelTableReadIOPS": {
+                        "Ref": "DynamoDBModelTableReadIOPS"
+                    },
+                    "DynamoDBModelTableWriteIOPS": {
+                        "Ref": "DynamoDBModelTableWriteIOPS"
+                    },
+                    "DynamoDBBillingMode": {
+                        "Ref": "DynamoDBBillingMode"
+                    },
+                    "DynamoDBEnablePointInTimeRecovery": {
+                        "Ref": "DynamoDBEnablePointInTimeRecovery"
+                    },
+                    "DynamoDBEnableServerSideEncryption": {
+                        "Ref": "DynamoDBEnableServerSideEncryption"
+                    },
+                    "referencetotransformerrootstackenv10C5A902Ref": {
+                        "Ref": "env"
+                    },
+                    "referencetotransformerrootstackGraphQLAPI20497F53ApiId": {
+                        "Fn::GetAtt": [
+                            "GraphQLAPI",
+                            "ApiId"
+                        ]
+                    },
+                    "referencetotransformerrootstackS3DeploymentBucket7592718ARef": {
+                        "Ref": "S3DeploymentBucket"
+                    },
+                    "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref": {
+                        "Ref": "S3DeploymentRootKey"
+                    },
+                    "referencetotransformerrootstackGameNestedStackGameNestedStackResource532AECD1OutputstransformerrootstackGameQuerygetGamepostAuth0FunctionQuerygetGamepostAuth0FunctionAppSyncFunction1E1E94D9FunctionId": {
+                        "Fn::GetAtt": [
+                            "Game",
+                            "Outputs.transformerrootstackGameQuerygetGamepostAuth0FunctionQuerygetGamepostAuth0FunctionAppSyncFunction1E1E94D9FunctionId"
+                        ]
+                    },
+                    "referencetotransformerrootstackGameNestedStackGameNestedStackResource532AECD1OutputstransformerrootstackGameMutationcreateGameinit0FunctionMutationcreateGameinit0FunctionAppSyncFunction7BC8B0B0FunctionId": {
+                        "Fn::GetAtt": [
+                            "Game",
+                            "Outputs.transformerrootstackGameMutationcreateGameinit0FunctionMutationcreateGameinit0FunctionAppSyncFunction7BC8B0B0FunctionId"
+                        ]
+                    },
+                    "referencetotransformerrootstackGameNestedStackGameNestedStackResource532AECD1OutputstransformerrootstackGameMutationupdateGameinit0FunctionMutationupdateGameinit0FunctionAppSyncFunctionB4650593FunctionId": {
+                        "Fn::GetAtt": [
+                            "Game",
+                            "Outputs.transformerrootstackGameMutationupdateGameinit0FunctionMutationupdateGameinit0FunctionAppSyncFunctionB4650593FunctionId"
+                        ]
+                    },
+                    "referencetotransformerrootstackGameNestedStackGameNestedStackResource532AECD1OutputstransformerrootstackGameSubscriptionOnCreateGameDataResolverFnSubscriptionOnCreateGameDataResolverFnAppSyncFunction8A40F0DDFunctionId": {
+                        "Fn::GetAtt": [
+                            "Game",
+                            "Outputs.transformerrootstackGameSubscriptionOnCreateGameDataResolverFnSubscriptionOnCreateGameDataResolverFnAppSyncFunction8A40F0DDFunctionId"
+                        ]
+                    }
+                },
+                "TemplateURL": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "https://s3.",
+                            {
+                                "Ref": "AWS::Region"
+                            },
+                            ".",
+                            {
+                                "Ref": "AWS::URLSuffix"
+                            },
+                            "/",
+                            {
+                                "Ref": "S3DeploymentBucket"
+                            },
+                            "/",
+                            {
+                                "Ref": "S3DeploymentRootKey"
+                            },
+                            "/stacks/Gameplay.json"
+                        ]
+                    ]
+                }
+            },
+            "DependsOn": [
+                "GraphQLAPITransformerSchema3CB2AE18"
+            ]
+        },
         "CustomResourcesjson": {
             "Type": "AWS::CloudFormation::Stack",
             "Properties": {
@@ -241,7 +329,8 @@
             "DependsOn": [
                 "GraphQLAPI",
                 "GraphQLAPITransformerSchema3CB2AE18",
-                "Game"
+                "Game",
+                "Gameplay"
             ]
         }
     },
