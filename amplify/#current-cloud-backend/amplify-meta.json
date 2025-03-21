@@ -42,7 +42,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-awsproject-dev-29bad-deployment/amplify-cfn-templates/auth/awsproject3584bfb3-cloudformation-template.json",
         "logicalId": "authawsproject3584bfb3"
       },
-      "lastPushTimeStamp": "2025-03-21T20:09:42.862Z",
+      "lastPushTimeStamp": "2025-03-21T21:51:47.392Z",
       "output": {
         "UserPoolId": "us-west-2_LpHrTCPw6",
         "AppClientIDWeb": "1qaub6q5erjj66haojgod9i1j9",
@@ -59,7 +59,15 @@
     "awsproject": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "awsproject3584bfb3",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ],
       "output": {
         "authConfig": {
           "defaultAuthentication": {
@@ -70,7 +78,14 @@
               "description": ""
             }
           },
-          "additionalAuthenticationProviders": []
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authawsproject3584bfb3"
+              }
+            }
+          ]
         },
         "GraphQLAPIIdOutput": "oqm46xomvjezjdnyzb54sve2ba",
         "GraphQLAPIEndpointOutput": "https://fznvjs7gzfhonb5i6szpd4awx4.appsync-api.us-west-2.amazonaws.com/graphql",
@@ -80,8 +95,8 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-awsproject-dev-29bad-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apiawsproject"
       },
-      "lastPushTimeStamp": "2025-03-21T20:09:44.277Z",
-      "lastPushDirHash": "xhjyPSkLKvLyftOmq+lDsoRITrU="
+      "lastPushTimeStamp": "2025-03-21T21:51:48.942Z",
+      "lastPushDirHash": "ey3cwU3YZ/ONYRpL6u5BYwAHiEA="
     }
   },
   "storage": {
@@ -89,7 +104,7 @@
       "service": "S3",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
-      "lastPushTimeStamp": "2025-03-21T20:09:42.887Z",
+      "lastPushTimeStamp": "2025-03-21T21:51:47.417Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-awsproject-dev-29bad-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
         "logicalId": "storageanimations"

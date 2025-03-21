@@ -97,3 +97,48 @@ export const onDeleteGameplay = /* GraphQL */ `
     }
   }
 `;
+export const onCreateUserInfo = /* GraphQL */ `
+  subscription OnCreateUserInfo(
+    $filter: ModelSubscriptionUserInfoFilterInput
+    $owner: String
+  ) {
+    onCreateUserInfo(filter: $filter, owner: $owner) {
+      id
+      totalPoints
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onUpdateUserInfo = /* GraphQL */ `
+  subscription OnUpdateUserInfo(
+    $filter: ModelSubscriptionUserInfoFilterInput
+    $owner: String
+  ) {
+    onUpdateUserInfo(filter: $filter, owner: $owner) {
+      id
+      totalPoints
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onDeleteUserInfo = /* GraphQL */ `
+  subscription OnDeleteUserInfo(
+    $filter: ModelSubscriptionUserInfoFilterInput
+    $owner: String
+  ) {
+    onDeleteUserInfo(filter: $filter, owner: $owner) {
+      id
+      totalPoints
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+  }
+`;

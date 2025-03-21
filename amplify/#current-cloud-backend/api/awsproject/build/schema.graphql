@@ -22,6 +22,14 @@ type Gameplay {
   updatedAt: AWSDateTime!
 }
 
+type UserInfo @aws_cognito_user_pools {
+  id: ID!
+  totalPoints: Int!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  owner: String
+}
+
 input ModelStringInput {
   ne: String
   eq: String
@@ -195,6 +203,8 @@ type Query {
   listGames(filter: ModelGameFilterInput, limit: Int, nextToken: String): ModelGameConnection
   getGameplay(id: ID!): Gameplay
   listGameplays(filter: ModelGameplayFilterInput, limit: Int, nextToken: String): ModelGameplayConnection
+  getUserInfo(id: ID!): UserInfo @aws_cognito_user_pools
+  listUserInfos(filter: ModelUserInfoFilterInput, limit: Int, nextToken: String): ModelUserInfoConnection @aws_cognito_user_pools
 }
 
 input ModelGameConditionInput {
@@ -236,6 +246,9 @@ type Mutation {
   createGameplay(input: CreateGameplayInput!, condition: ModelGameplayConditionInput): Gameplay
   updateGameplay(input: UpdateGameplayInput!, condition: ModelGameplayConditionInput): Gameplay
   deleteGameplay(input: DeleteGameplayInput!, condition: ModelGameplayConditionInput): Gameplay
+  createUserInfo(input: CreateUserInfoInput!, condition: ModelUserInfoConditionInput): UserInfo @aws_cognito_user_pools
+  updateUserInfo(input: UpdateUserInfoInput!, condition: ModelUserInfoConditionInput): UserInfo @aws_cognito_user_pools
+  deleteUserInfo(input: DeleteUserInfoInput!, condition: ModelUserInfoConditionInput): UserInfo @aws_cognito_user_pools
 }
 
 input ModelSubscriptionGameFilterInput {
@@ -257,6 +270,9 @@ type Subscription {
   onCreateGameplay(filter: ModelSubscriptionGameplayFilterInput): Gameplay @aws_subscribe(mutations: ["createGameplay"])
   onUpdateGameplay(filter: ModelSubscriptionGameplayFilterInput): Gameplay @aws_subscribe(mutations: ["updateGameplay"])
   onDeleteGameplay(filter: ModelSubscriptionGameplayFilterInput): Gameplay @aws_subscribe(mutations: ["deleteGameplay"])
+  onCreateUserInfo(filter: ModelSubscriptionUserInfoFilterInput, owner: String): UserInfo @aws_subscribe(mutations: ["createUserInfo"]) @aws_cognito_user_pools
+  onUpdateUserInfo(filter: ModelSubscriptionUserInfoFilterInput, owner: String): UserInfo @aws_subscribe(mutations: ["updateUserInfo"]) @aws_cognito_user_pools
+  onDeleteUserInfo(filter: ModelSubscriptionUserInfoFilterInput, owner: String): UserInfo @aws_subscribe(mutations: ["deleteUserInfo"]) @aws_cognito_user_pools
 }
 
 type ModelGameplayConnection {
@@ -339,4 +355,54 @@ input ModelSubscriptionGameplayFilterInput {
   updatedAt: ModelSubscriptionStringInput
   and: [ModelSubscriptionGameplayFilterInput]
   or: [ModelSubscriptionGameplayFilterInput]
+}
+
+type ModelUserInfoConnection @aws_cognito_user_pools {
+  items: [UserInfo]!
+  nextToken: String
+}
+
+input ModelUserInfoFilterInput {
+  id: ModelIDInput
+  totalPoints: ModelIntInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  and: [ModelUserInfoFilterInput]
+  or: [ModelUserInfoFilterInput]
+  not: ModelUserInfoFilterInput
+  owner: ModelStringInput
+}
+
+input ModelUserInfoConditionInput {
+  totalPoints: ModelIntInput
+  and: [ModelUserInfoConditionInput]
+  or: [ModelUserInfoConditionInput]
+  not: ModelUserInfoConditionInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  owner: ModelStringInput
+}
+
+input CreateUserInfoInput {
+  id: ID
+  totalPoints: Int!
+}
+
+input UpdateUserInfoInput {
+  id: ID!
+  totalPoints: Int
+}
+
+input DeleteUserInfoInput {
+  id: ID!
+}
+
+input ModelSubscriptionUserInfoFilterInput {
+  id: ModelSubscriptionIDInput
+  totalPoints: ModelSubscriptionIntInput
+  createdAt: ModelSubscriptionStringInput
+  updatedAt: ModelSubscriptionStringInput
+  and: [ModelSubscriptionUserInfoFilterInput]
+  or: [ModelSubscriptionUserInfoFilterInput]
+  owner: ModelStringInput
 }

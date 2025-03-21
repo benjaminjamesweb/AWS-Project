@@ -8,6 +8,7 @@ import GamePage from './pages/GamePage';
 
 function App({ signOut, user }) {
 
+
   console.log(user)
 
   let routes = useRoutes([

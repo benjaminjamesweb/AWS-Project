@@ -21,3 +21,8 @@ type Gameplay @model {
   q3: String
   a3: [String]
 }
+
+type UserInfo @model @auth(rules: [{ allow: owner }]) {
+  id: ID!        
+  totalPoints: Int!
+}
