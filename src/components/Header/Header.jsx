@@ -1,9 +1,54 @@
 import React, { useEffect, useState } from 'react'
 import './Header.css'
 import { generateClient } from 'aws-amplify/api';
-import { updateUserInfo } from '../../graphql/mutations';
+import { createUserInfo, updateUserInfo } from '../../graphql/mutations';
+import { getUserInfo } from '../../graphql/queries';
 
-const Header = ({points, setPoints, email, logout}) => {
+const Header = ({email, logout}) => {
+      const [points, setPoints] = useState([])
+
+      
+    useEffect(() => {
+      const ensureUserInfo = async () => {
+          try {
+              const client = generateClient();
+  
+              const result = await client.graphql({
+                  query: getUserInfo,
+                  variables: { id: email },
+                  authMode: 'userPool'
+              });
+
+              const userInfo = result?.data?.getUserInfo;
+  
+              if (!userInfo) {
+                  console.log("No user found - creating entry");
+                  await client.graphql({
+                      query: createUserInfo,
+                      variables: {
+                          input: {
+                              id: email,        
+                              totalPoints: 0
+                          }
+                      },
+                      authMode: 'userPool'
+                  });
+  
+                  console.log('UserInfo created');
+                  setPoints(0)
+              } else {
+                  console.log('UserInfo already exists');
+                  setPoints(userInfo.totalPoints)
+                  console.log("user result:", userInfo)
+              }
+  
+          } catch (error) {
+              console.error('Error in ensureUserInfo:', error);
+          }
+      };
+  
+      ensureUserInfo();
+  }, [email]);
 
   const updatePointsInDB = async (newPoints) => {
     try {
