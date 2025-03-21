@@ -136,7 +136,7 @@ if (!game) return <p>Error: Game not found.</p>;
         {!isPlaying && (
             <>
                 <h2 style={{ marginTop: "25%" }}>{gameplay?.q1}</h2>
-                {gameplay.a1.map((answer, index) => (
+                {gameplay?.a1.map((answer, index) => (
                   <p key={index}>{answer}</p>
                 ))}
             </>

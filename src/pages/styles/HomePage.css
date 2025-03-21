@@ -6,13 +6,14 @@
     align-items: center;
 }
 
-.games-div{
-    margin-top: 3%;
-    background-color: rgb(102, 90, 136);
-    width: 80%;
-    height: 75%;
-    border-radius: 12px;
+.games-div {
+    margin: 5%;
+    padding: 3%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    overflow-y: auto;
+    width: 90%;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+    grid-auto-rows: auto;   
+    align-items: start;     
+    height: 75vh;           
+    overflow-y: hidden;     
 }

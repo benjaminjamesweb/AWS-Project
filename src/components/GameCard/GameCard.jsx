@@ -9,11 +9,11 @@ const GameCard = ({ game }) => {
 
 
   return (
-    <div className="gamecard-div">
-      <h1>{game.name}</h1>
-      <p>{game.description}</p>
+    <div className="gamecard-div" onClick={() => navigate(`/${game.id}`)}>
+      {/* <h1>{game.name}</h1>
+      <p>{game.description}</p> */}
       <img src={imageUrl} alt={game.name} style={{ maxWidth: "100%", height: "auto" }} />
-      <button onClick={() => navigate(`/${game.id}`)}>Select</button>
+      {/* <button onClick={() => navigate(`/${game.id}`)}>Select</button> */}
 
 
     </div>
