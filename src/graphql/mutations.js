@@ -62,11 +62,23 @@ export const createGameplay = /* GraphQL */ `
       gameid
       proficiency
       q1
-      a1
+      a1 {
+        text
+        points
+        __typename
+      }
       q2
-      a2
+      a2 {
+        text
+        points
+        __typename
+      }
       q3
-      a3
+      a3 {
+        text
+        points
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -83,11 +95,23 @@ export const updateGameplay = /* GraphQL */ `
       gameid
       proficiency
       q1
-      a1
+      a1 {
+        text
+        points
+        __typename
+      }
       q2
-      a2
+      a2 {
+        text
+        points
+        __typename
+      }
       q3
-      a3
+      a3 {
+        text
+        points
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -104,11 +128,23 @@ export const deleteGameplay = /* GraphQL */ `
       gameid
       proficiency
       q1
-      a1
+      a1 {
+        text
+        points
+        __typename
+      }
       q2
-      a2
+      a2 {
+        text
+        points
+        __typename
+      }
       q3
-      a3
+      a3 {
+        text
+        points
+        __typename
+      }
       createdAt
       updatedAt
       __typename

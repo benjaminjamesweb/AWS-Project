@@ -10,16 +10,21 @@ type Game @model {
   levels: [String]
 }
 
+type AnswerPair{
+  text: String
+  points: Int
+}
+
 type Gameplay @model {
   id: ID!
   gameid: String!
   proficiency: String!
   q1: String
-  a1: [String]
+  a1: [AnswerPair]
   q2: String
-  a2: [String]
+  a2: [AnswerPair]
   q3: String
-  a3: [String]
+  a3: [AnswerPair]
 }
 
 type UserInfo @model @auth(rules: [{ allow: owner }]) {

@@ -44,11 +44,23 @@ export const getGameplay = /* GraphQL */ `
       gameid
       proficiency
       q1
-      a1
+      a1 {
+        text
+        points
+        __typename
+      }
       q2
-      a2
+      a2 {
+        text
+        points
+        __typename
+      }
       q3
-      a3
+      a3 {
+        text
+        points
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -67,11 +79,20 @@ export const listGameplays = /* GraphQL */ `
         gameid
         proficiency
         q1
-        a1
-        q2
-        a2
-        q3
-        a3
+          a1 {
+            text
+            points
+          }
+          q2
+          a2 {
+            text
+            points
+          }
+          q3
+          a3 {
+            text
+            points
+          }
         createdAt
         updatedAt
         __typename
@@ -80,7 +101,9 @@ export const listGameplays = /* GraphQL */ `
       __typename
     }
   }
-`;
+`; 
+
+
 export const getUserInfo = /* GraphQL */ `
   query GetUserInfo($id: ID!) {
     getUserInfo(id: $id) {

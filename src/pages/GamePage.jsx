@@ -74,6 +74,8 @@ const GamePage = ({ email, logout }) => {
           const filteredGameplay = result.data.listGameplays.items.find(
             (gameplay) => gameplay.gameid === gameid
           );
+
+          console.log(filteredGameplay)
   
           if (filteredGameplay) {
             setGameplay(filteredGameplay);
@@ -133,23 +135,37 @@ if (!game) return <p>Error: Game not found.</p>;
     </div>
 
     <div className='gameplay-div'>
-        {!isPlaying && (
-            <>
-                <h2 style={{ marginTop: "25%" }}>{gameplay?.q1}</h2>
-                {gameplay?.a1.map((answer, index) => (
-                  <p key={index}>{answer}</p>
-                ))}
-            </>
-        )}
+  {!isPlaying && gameplay && (
+    <>
+      {gameplay.a1?.map((answer, index) => (
+  <p key={`a1-${index}`}>
+    {answer.text} — {answer.points}
+  </p>
+))}
 
-        {isPlaying && (
-            <>
-                <h1>Here's the game!</h1>
-                <p>Game instructions go here.</p>
-                <button>Stop</button>
-            </>
-        )}
-    </div>
+{gameplay.a2?.map((answer, index) => (
+  <p key={`a2-${index}`}>
+    {answer.text} — {answer.points}
+  </p>
+))}
+
+{gameplay.a3?.map((answer, index) => (
+  <p key={`a3-${index}`}>
+    {answer.text} — {answer.points}
+  </p>
+))}
+    </>
+  )}
+
+  {isPlaying && (
+    <>
+      <h1>Here's the game!</h1>
+      <p>Game instructions go here.</p>
+      <button>Stop</button>
+    </>
+  )}
+</div>
+
 
     </div>
 

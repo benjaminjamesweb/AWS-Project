@@ -8,16 +8,21 @@ type Game {
   updatedAt: AWSDateTime!
 }
 
+type AnswerPair {
+  text: String
+  points: Int
+}
+
 type Gameplay {
   id: ID!
   gameid: String!
   proficiency: String!
   q1: String
-  a1: [String]
+  a1: [AnswerPair]
   q2: String
-  a2: [String]
+  a2: [AnswerPair]
   q3: String
-  a3: [String]
+  a3: [AnswerPair]
   createdAt: AWSDateTime!
   updatedAt: AWSDateTime!
 }
@@ -275,6 +280,11 @@ type Subscription {
   onDeleteUserInfo(filter: ModelSubscriptionUserInfoFilterInput, owner: String): UserInfo @aws_subscribe(mutations: ["deleteUserInfo"]) @aws_cognito_user_pools
 }
 
+input AnswerPairInput {
+  text: String
+  points: Int
+}
+
 type ModelGameplayConnection {
   items: [Gameplay]!
   nextToken: String
@@ -285,11 +295,8 @@ input ModelGameplayFilterInput {
   gameid: ModelStringInput
   proficiency: ModelStringInput
   q1: ModelStringInput
-  a1: ModelStringInput
   q2: ModelStringInput
-  a2: ModelStringInput
   q3: ModelStringInput
-  a3: ModelStringInput
   createdAt: ModelStringInput
   updatedAt: ModelStringInput
   and: [ModelGameplayFilterInput]
@@ -301,11 +308,8 @@ input ModelGameplayConditionInput {
   gameid: ModelStringInput
   proficiency: ModelStringInput
   q1: ModelStringInput
-  a1: ModelStringInput
   q2: ModelStringInput
-  a2: ModelStringInput
   q3: ModelStringInput
-  a3: ModelStringInput
   and: [ModelGameplayConditionInput]
   or: [ModelGameplayConditionInput]
   not: ModelGameplayConditionInput
@@ -318,11 +322,11 @@ input CreateGameplayInput {
   gameid: String!
   proficiency: String!
   q1: String
-  a1: [String]
+  a1: [AnswerPairInput]
   q2: String
-  a2: [String]
+  a2: [AnswerPairInput]
   q3: String
-  a3: [String]
+  a3: [AnswerPairInput]
 }
 
 input UpdateGameplayInput {
@@ -330,11 +334,11 @@ input UpdateGameplayInput {
   gameid: String
   proficiency: String
   q1: String
-  a1: [String]
+  a1: [AnswerPairInput]
   q2: String
-  a2: [String]
+  a2: [AnswerPairInput]
   q3: String
-  a3: [String]
+  a3: [AnswerPairInput]
 }
 
 input DeleteGameplayInput {
@@ -346,11 +350,8 @@ input ModelSubscriptionGameplayFilterInput {
   gameid: ModelSubscriptionStringInput
   proficiency: ModelSubscriptionStringInput
   q1: ModelSubscriptionStringInput
-  a1: ModelSubscriptionStringInput
   q2: ModelSubscriptionStringInput
-  a2: ModelSubscriptionStringInput
   q3: ModelSubscriptionStringInput
-  a3: ModelSubscriptionStringInput
   createdAt: ModelSubscriptionStringInput
   updatedAt: ModelSubscriptionStringInput
   and: [ModelSubscriptionGameplayFilterInput]
