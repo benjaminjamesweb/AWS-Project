@@ -135,27 +135,30 @@ if (!game) return <p>Error: Game not found.</p>;
     </div>
 
     <div className='gameplay-div'>
-  {!isPlaying && gameplay && (
-    <>
-      {gameplay.a1?.map((answer, index) => (
-  <p key={`a1-${index}`}>
-    {answer.text} — {answer.points}
-  </p>
-))}
+      {!isPlaying && gameplay && (
+        <>
+          <h2>{gameplay.q1}</h2>
+          {gameplay.a1?.map((answer, index) => (
+            <p key={`a1-${index}`}>
+              {answer.text} — {answer.points}
+            </p>
+          ))}
 
-{gameplay.a2?.map((answer, index) => (
-  <p key={`a2-${index}`}>
-    {answer.text} — {answer.points}
-  </p>
-))}
+          <h2>{gameplay.q2}</h2>
+          {gameplay.a2?.map((answer, index) => (
+            <p key={`a2-${index}`}>
+              {answer.text} — {answer.points}
+            </p>
+          ))}
 
-{gameplay.a3?.map((answer, index) => (
-  <p key={`a3-${index}`}>
-    {answer.text} — {answer.points}
-  </p>
-))}
-    </>
-  )}
+          <h2>{gameplay.q3}</h2>
+          {gameplay.a3?.map((answer, index) => (
+            <p key={`a3-${index}`}>
+              {answer.text} — {answer.points}
+            </p>
+          ))}
+        </>
+      )}
 
   {isPlaying && (
     <>
