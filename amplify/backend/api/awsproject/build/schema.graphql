@@ -18,10 +18,13 @@ type Gameplay {
   gameid: String!
   proficiency: String!
   q1: String
+  q1media: String
   a1: [AnswerPair]
   q2: String
+  q2media: String
   a2: [AnswerPair]
   q3: String
+  q3media: String
   a3: [AnswerPair]
   createdAt: AWSDateTime!
   updatedAt: AWSDateTime!
@@ -295,8 +298,11 @@ input ModelGameplayFilterInput {
   gameid: ModelStringInput
   proficiency: ModelStringInput
   q1: ModelStringInput
+  q1media: ModelStringInput
   q2: ModelStringInput
+  q2media: ModelStringInput
   q3: ModelStringInput
+  q3media: ModelStringInput
   createdAt: ModelStringInput
   updatedAt: ModelStringInput
   and: [ModelGameplayFilterInput]
@@ -308,8 +314,11 @@ input ModelGameplayConditionInput {
   gameid: ModelStringInput
   proficiency: ModelStringInput
   q1: ModelStringInput
+  q1media: ModelStringInput
   q2: ModelStringInput
+  q2media: ModelStringInput
   q3: ModelStringInput
+  q3media: ModelStringInput
   and: [ModelGameplayConditionInput]
   or: [ModelGameplayConditionInput]
   not: ModelGameplayConditionInput
@@ -322,10 +331,13 @@ input CreateGameplayInput {
   gameid: String!
   proficiency: String!
   q1: String
+  q1media: String
   a1: [AnswerPairInput]
   q2: String
+  q2media: String
   a2: [AnswerPairInput]
   q3: String
+  q3media: String
   a3: [AnswerPairInput]
 }
 
@@ -334,10 +346,13 @@ input UpdateGameplayInput {
   gameid: String
   proficiency: String
   q1: String
+  q1media: String
   a1: [AnswerPairInput]
   q2: String
+  q2media: String
   a2: [AnswerPairInput]
   q3: String
+  q3media: String
   a3: [AnswerPairInput]
 }
 
@@ -350,8 +365,11 @@ input ModelSubscriptionGameplayFilterInput {
   gameid: ModelSubscriptionStringInput
   proficiency: ModelSubscriptionStringInput
   q1: ModelSubscriptionStringInput
+  q1media: ModelSubscriptionStringInput
   q2: ModelSubscriptionStringInput
+  q2media: ModelSubscriptionStringInput
   q3: ModelSubscriptionStringInput
+  q3media: ModelSubscriptionStringInput
   createdAt: ModelSubscriptionStringInput
   updatedAt: ModelSubscriptionStringInput
   and: [ModelSubscriptionGameplayFilterInput]

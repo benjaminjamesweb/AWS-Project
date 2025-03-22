@@ -20,10 +20,13 @@ type Gameplay @model {
   gameid: String!
   proficiency: String!
   q1: String
+  q1media: String
   a1: [AnswerPair]
   q2: String
+  q2media: String
   a2: [AnswerPair]
   q3: String
+  q3media: String
   a3: [AnswerPair]
 }
 
