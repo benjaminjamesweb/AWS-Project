@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getGame, getGameplay, listGameplays } from '../graphql/queries';
 import Header from '../components/Header/Header';
 import './styles/GamePage.css'
+import { usePoints } from '../contexts/PointsContext';
 
 const GamePage = ({ email, logout }) => {
   const { gameid } = useParams(); 
@@ -12,6 +13,7 @@ const GamePage = ({ email, logout }) => {
   const [gameplay, setGameplay] = useState(null)
   const [loading, setLoading] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false)
+    const { points, setPoints, loadingPoints } = usePoints();
 
   const navigate = useNavigate()
 
@@ -19,9 +21,12 @@ const GamePage = ({ email, logout }) => {
   ? `https://awsproject8323bb13017a4477bcd0711301be9dc229bad-dev.s3.us-west-2.amazonaws.com/${game.image}`
   : "";
 
+  const s3URL = `https://awsproject8323bb13017a4477bcd0711301be9dc229bad-dev.s3.us-west-2.amazonaws.com/`
+
 
   const handleLevelChange = (event) => {
     setSelectedLevel(event.target.value);
+    console.log('selected level:', selectedLevel)
   };
 
   const handleClickPlay = () => {
@@ -29,7 +34,7 @@ const GamePage = ({ email, logout }) => {
   }
 
   useEffect(() => {
-    if (!gameid) return; // Prevents API call if gameid is null
+    if (!gameid) return; 
   
     const fetchGame = async () => {
       const client = generateClient();
@@ -37,7 +42,9 @@ const GamePage = ({ email, logout }) => {
       try {
         const result = await client.graphql({
           query: getGame,
-          variables: { id: gameid } // Ensure id is always provided
+          variables: { 
+            id: gameid
+          } 
         });
   
         if (result.data?.getGame) {
@@ -57,22 +64,22 @@ const GamePage = ({ email, logout }) => {
   
 
   useEffect(() => {
-    if (!gameid) return; // Prevents API call if gameid is null
+    if (!gameid) return; 
   
     const fetchGameplay = async () => {
       const client = generateClient();
   
       try {
         const result = await client.graphql({
-          query: listGameplays, // Fetch ALL gameplay data
+          query: listGameplays, 
         });
   
-        console.log("GraphQL Response:", result); // Debugging
+        console.log("GraphQL Response:", result); 
   
         if (result.data?.listGameplays?.items.length > 0) {
-          // Filter gameplay manually by gameid
+
           const filteredGameplay = result.data.listGameplays.items.find(
-            (gameplay) => gameplay.gameid === gameid
+            (gameplay) => gameplay.gameid === gameid && gameplay.proficiency === selectedLevel
           );
 
           console.log(filteredGameplay)
@@ -93,7 +100,7 @@ const GamePage = ({ email, logout }) => {
     };
   
     fetchGameplay();
-  }, [gameid]);
+  }, [gameid, selectedLevel]);
   
   
   
@@ -135,36 +142,47 @@ if (!game) return <p>Error: Game not found.</p>;
     </div>
 
     <div className='gameplay-div'>
-      {!isPlaying && gameplay && (
+      {!isPlaying && (
         <>
-          <h2>{gameplay.q1}</h2>
-          {gameplay.a1?.map((answer, index) => (
-            <p key={`a1-${index}`}>
-              {answer.text} — {answer.points}
-            </p>
-          ))}
-
-          <h2>{gameplay.q2}</h2>
-          {gameplay.a2?.map((answer, index) => (
-            <p key={`a2-${index}`}>
-              {answer.text} — {answer.points}
-            </p>
-          ))}
-
-          <h2>{gameplay.q3}</h2>
-          {gameplay.a3?.map((answer, index) => (
-            <p key={`a3-${index}`}>
-              {answer.text} — {answer.points}
-            </p>
-          ))}
+          <h2>{game.name}</h2>
+          <p>{game.description}</p>
+          <p>{game?.instructions}</p>
         </>
       )}
 
   {isPlaying && (
     <>
-      <h1>Here's the game!</h1>
-      <p>Game instructions go here.</p>
-      <button>Stop</button>
+      <h2>{gameplay.q1}</h2>
+          <img src={`${s3URL}${gameplay?.q1media}`} alt="Q1 media" />
+          {gameplay.a1?.map((answer, index) => (
+            <button key={`a1-${index}`}
+            onClick={() => setPoints(points + answer.points)}
+            >
+              {answer.text}
+            </button>
+          ))}
+
+          <h2>{gameplay.q2}</h2>
+          <img src={`${s3URL}${gameplay?.q2media}`} alt="Q2 media" />
+          <img src={gameplay?.q2media} alt="" />
+          {gameplay.a2?.map((answer, index) => (
+            <button 
+            key={`a2-${index}`}
+            onClick={() => setPoints(points + answer.points)}
+            >
+              {answer.text}
+            </button>
+          ))}
+
+          <h2>{gameplay.q3}</h2>
+          <img src={`${s3URL}${gameplay?.q3media}`} alt="Q3 media" />
+          {gameplay.a3?.map((answer, index) => (
+            <button key={`a3-${index}`}
+            onClick={() => setPoints(points + answer.points)}
+            >
+              {answer.text}
+            </button>
+          ))}
     </>
   )}
 </div>

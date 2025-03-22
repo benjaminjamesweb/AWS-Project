@@ -82,11 +82,26 @@ export const listGameplays = /* GraphQL */ `
         gameid
         proficiency
         q1
-        q1media
-        q2
-        q2media
-        q3
-        q3media
+      q1media
+      a1 {
+        text
+        points
+        __typename
+      }
+      q2
+      q2media
+      a2 {
+        text
+        points
+        __typename
+      }
+      q3
+      q3media
+      a3 {
+        text
+        points
+        __typename
+      }
         createdAt
         updatedAt
         __typename

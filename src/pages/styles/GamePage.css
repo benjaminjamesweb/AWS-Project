@@ -20,6 +20,7 @@
 
 .gameplay-div{
     width: 70%;
+    height: 80%;
     margin: 20px;
     margin-left: 50px;
     border-radius: 12px;
@@ -27,7 +28,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
+    overflow-y: auto;
 }
 
 .pregame-div img{
