@@ -117,7 +117,7 @@ if (!game) return <p>Error: Game not found.</p>;
         <div className='game-info-div'>
             <button onClick={() => navigate('/')}>Back</button>
         <h1>Welcome to {game.name}!</h1>
-        <p>{game.description}</p>
+        {/* <p>{game.description}</p> */}
         {imageUrl && <img src={imageUrl} alt={game.name} />}
 
         <div className="levels-div">
