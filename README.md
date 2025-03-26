@@ -33,7 +33,7 @@ The intended audience is kids (below 12). The purpose of the app is to give them
 
 *2.2 Scope*
 
-Games will very very simple multiple choice games (basically, fun quizzes with animated gifs). Each game (quiz) will be three questions long. I will implement at least 5 games, which will all be playable at three proficiency levels (A1, A2, B1). 
+Games will be very simple multiple choice quizes. Each game (quiz) will be three questions long. I will implement at least 5 games, which will all be playable at three proficiency levels (A1, A2, B1). 
 
 <br>
 
