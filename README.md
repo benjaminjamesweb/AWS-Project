@@ -3,43 +3,39 @@
 ## Ben Gannon - CSTP 2110
 
 
-### Section 1 - Project Overview
+### Section 1 - Project Description
 
-*1.1 Objective*
+*1.1 Project*
 
-The name of my project is Anglophoria. It’s the same concept I used in my final project for CSTP 1303 (Intro to Client-Server) – however, the app I created then was extremely basic: first of all, it was vanilla JavaScript (all hard-coded data, no React); had monolithic architecture (separate folders for backend and frontend); and used MongoDB atlas as a cloud database (to store only user information). This term, I would like to re-create the app using all the new things I’ve learned since then. I’ll code from scratch using React, create a better variety of playable games / quizzes, create a better UI, and of course use exclusively AWS to handle the data. 
+Anglophoria
+
+*1.2 Description*
+
+t’s the same concept I used in my final project for CSTP 1303 (Intro to Client-Server) – however, the app I created then was extremely basic: first of all, it was vanilla JavaScript (all hard-coded data, no React); had monolithic architecture (separate folders for backend and frontend); and used MongoDB atlas as a cloud database (to store only user information). This term, I would like to re-create the app using all the new things I’ve learned since then. I’ll code from scratch using React, create a better variety of playable games / quizzes, create a better UI, and of course use exclusively AWS to handle the data. 
 The main goal of the project is to create a website where users can play various fun games to test/improve their English. 
 The problem my website attempts to solve is that many language-learning sites are boring, and don’t allow the user to easily pick and choose what type of learning they want to focus on. For example, Duolingo just presents all users with the same generic fill-in-the-blank slides that they need to click through endlessly. A site where users can choose what type of challenge / what topic they want to focus on gives them greater flexibility and encourages them to keep practicing English (and to hone in on their weak spots). 
 
-*1.2 Scope*
+*1.3 Revision History*
 
-One important boundary of the project will be the quantity and depth of available games. If this were a real application, of course I would want to have thousands of different games, playable at all different proficiency levels. For this project, I can’t dedicate too much time towards creating all this content. Instead, I’ll focus on creating at least one game that is playable on at least three proficient levels. 
-The website will include the following features:
+No revisions yet.
 
-•	Users can sign up, log in, and log out of their accounts
+### Section 2 - Overview
 
-•	Users can browse a games screen (on the home page) and select a game
+*2.1 Purpose*
 
-•	Users can select the proficiency level for that game
+The intended audience is for kids. The purpose of the app is to give them excercies that they can use to practice/improve their English at multiple levels (up to B1). 
 
-•	Users can play the game
+*2.2 Scope*
 
-•	After the game ends, users get feedback about their performance
+Games will very very simple multiple choice games (basically, fun quizzes with animated gifs). Each game (quiz) will be three questions long. I will implement at least 5 games, which will all be playable at three proficiency levels (A1, A2, B1). 
 
-•	Users gain/lose points based on their performance
+*2.3 Requirements*
 
-Some features that will explicitly not be included are:
-
-•	User settings (for changing email/password information)
-
-•	Filter/sort/search options for games (this would be nice to include though – if I have time, I’ll add it)
-
-•	Connection to other users (e.g. Direct Messaging, Multi-Player games)
+Users should be able to seamlessly sign up, log in, choose games, choose proficiency levels, play games, and receive (correct) points based on their answers. 
 
 
-### Section 2 - Functional Requirements
+*2.3.1 Functional Requirements*
 
-*2.1. Core Features*
 
 •	Secure user signup/login/logout: a user can successfully create an account, sign in, and log out. Their password should be hashed, and the original plaintext should not be stored anywhere in the database. Two users should not be able to create accounts using the same email. The log in page should give relevant feedback to the user (e.g. “wrong password,” “that account does not exist”) based on their input. 
 
@@ -54,6 +50,7 @@ Some features that will explicitly not be included are:
 •	Game page: the user plays an English-language learning game. All games should be timed, but they will have very different formats. Some formats might be “choose the best response,” “unscramble the word,” or the classic “fill in the blanks.” 
 
 •	Post-game page: after the timer runs out, the user is presented with feedback, including score/points, wrong answers, and the option to play again. Ideally, this page would identify the user’s English weak spots (e.g. specific words, grammar patterns), and give them the option to add those weak spots to a “notes” page. However, in the scope of this project, I will probably not implement this feature. 
+
 
 *2.2. Additional Features*
 
