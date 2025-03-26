@@ -13,9 +13,7 @@ Anglophoria
 
 *1.2 Description*
 
-The app is based on the same concept I used in my final project for CSTP 1303 (Intro to Client-Server) – however, the app I created then was extremely basic: first of all, it was vanilla JavaScript (all hard-coded data, no React); had monolithic architecture (separate folders for backend and frontend); and used MongoDB atlas as a cloud database (to store only user information). This term, I would like to re-create the app using all the new things I’ve learned since then. I’ll code from scratch using React, create a better variety of playable games / quizzes, create a better UI, and of course use exclusively AWS to handle the data. 
-The main goal of the project is to create a website where users can play various fun games to test/improve their English. 
-The problem my website attempts to solve is that many language-learning sites are boring, and don’t allow the user to easily pick and choose what type of learning they want to focus on. For example, Duolingo just presents all users with the same generic fill-in-the-blank slides that they need to click through endlessly. A site where users can choose what type of challenge / what topic they want to focus on gives them greater flexibility and encourages them to keep practicing English (and to hone in on their weak spots). 
+Anglophoria is a website where users can play various fun games to test/improve their English. The content aims to be entertaining and educational. The UI aims to give the user a fully-customizable learning experience, where they can choose which games to play at which proficiency level.  
 
 <br>
 
@@ -29,7 +27,7 @@ No revisions yet.
 
 *2.1 Purpose*
 
-The intended audience is for kids. The purpose of the app is to give them excercies that they can use to practice/improve their English at multiple levels (up to B1). 
+The intended audience is kids (below 12). The purpose of the app is to give them excercies that they can use to practice/improve their English at multiple levels (up to B1), in a way that appeals to their age group (lots of visuals, including animated animal gifs, as well as funny/light content). 
 
 <br>
 
@@ -47,35 +45,33 @@ Users should be able to seamlessly sign up, log in, choose games, choose profici
 
 *2.3.1 Functional Requirements*
 
-•	Secure user signup/login/logout: a user can successfully create an account, sign in, and log out. Their password should be hashed, and the original plaintext should not be stored anywhere in the database. Two users should not be able to create accounts using the same email. The log in page should give relevant feedback to the user (e.g. “wrong password,” “that account does not exist”) based on their input. 
+•	(R1): Secure user signup/login/logout
 
-•	User scoreboard: at the top of the homepage, there should be a simple scoreboard displaying the number of “stars” a user has. This number of stars is dependent on the user’s game history: for example, a perfect game at A1-proficiency gains the user 2 stars, whereas for B2-proficiency it gains 6 stars; likewise, getting a score of 0 on those games results in -2 and -6 stars respectively. (Alternatively, I might separate each score to its own proficiency level – i.e. the user would have separate scores for A1, A2, B1…)
+•	(R2): Scoreboard (showing total points achieved)
 
-•	Game console: a grid of clickable games tiles 
+•	(R3): Game arcade (a grid of clickable games tiles) 
 
-•	Scoreboard: a banner at the top that shows the user's current points 
+•	(R4): Game description / level selection page
 
-•	Game info pop-up menu: after clicking a game tile, the game info menu pops up on the right side of the screen, displaying info about the game like name, description, and playable proficiency levels. It should also have a “Proceed” button.
+•	(R5): Gameplay page (the user plays a "game," really an MCQ with 3 questions) 
 
-•	Pre-game screen: after clicking “Proceed” in the game info menu, the user is taken to the pre-game screen, which shows them the instructions, and allows them to start the game. 
-
-•	Game page: the user plays an English-language learning game. All games should be timed, but they will have very different formats. Some formats might be “choose the best response,” “unscramble the word,” or the classic “fill in the blanks.” 
-
-•	Post-game page: after the timer runs out, the user is presented with feedback, including score/points, wrong answers, and the option to play again. Ideally, this page would identify the user’s English weak spots (e.g. specific words, grammar patterns), and give them the option to add those weak spots to a “notes” page. However, in the scope of this project, I will probably not implement this feature. 
+•	(R6): Post-gameplay page: after the game is over, the user is presented with feedback, including score/points, wrong answers, and the option to play again. 
 
 <br>
 
 *2.3.2 Non-Functional Requirements*
 
-•	High performance/reliability throughout (no long loading components, no redundant fetching)
+•	Performance: system should handle 1000+ concurrent users without performance degradation
+
+•	Reliability: system should have 99.9% uptime
 
 <br>
 
 *2.3.3 Technical Requirements*
 
-HARDWARE: As a web app, there are not any hardware requirements for the user. It should not cause any spikes or significant elevation in memory.
+•	Hardware: As a web app, there are not any hardware requirements for the user. It should not cause any spikes or significant elevation in memory.
 
-SOFTWARE: The web app will be developed using Javascript in the React + Vite framework. 
+•	Software: The web app will be developed using Javascript in the React + Vite framework. 
 
 <br>
 
@@ -83,13 +79,20 @@ SOFTWARE: The web app will be developed using Javascript in the React + Vite fra
 
 •	Authentication: the system will use AWS Cognito for authenticating users. It will store user log in data inside a secure user pool. 
 
-•	Data Encryption: the data within the website is generally safe, read-only data, that does not require encryption. The only sensitive data is the user's login info, which is handled by AWS Cognito. 
+•	Data Encryption: the data within the website is generally safe, read-only data, that does not require encryption. 
 
 <br>
 
 *2.3.5 Estimates*
 
-TOTAL: 50 hours
+| # | Description | Hrs. Est  |
+|----------|-----|------------|
+| 1 | Sign in page  | 3 |
+| 2 | Games page | 5 |
+| 3 | Scoreboard  | 2 |
+| 4 | Gameplays  | 10 |
+| 5 | Post-gameplay page | 3 |
+|  | TOTAL: | 25 |
 
 <br>
 
