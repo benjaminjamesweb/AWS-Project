@@ -9,9 +9,10 @@
 
 Anglophoria
 
+
 *1.2 Description*
 
-t’s the same concept I used in my final project for CSTP 1303 (Intro to Client-Server) – however, the app I created then was extremely basic: first of all, it was vanilla JavaScript (all hard-coded data, no React); had monolithic architecture (separate folders for backend and frontend); and used MongoDB atlas as a cloud database (to store only user information). This term, I would like to re-create the app using all the new things I’ve learned since then. I’ll code from scratch using React, create a better variety of playable games / quizzes, create a better UI, and of course use exclusively AWS to handle the data. 
+The app is based on the same concept I used in my final project for CSTP 1303 (Intro to Client-Server) – however, the app I created then was extremely basic: first of all, it was vanilla JavaScript (all hard-coded data, no React); had monolithic architecture (separate folders for backend and frontend); and used MongoDB atlas as a cloud database (to store only user information). This term, I would like to re-create the app using all the new things I’ve learned since then. I’ll code from scratch using React, create a better variety of playable games / quizzes, create a better UI, and of course use exclusively AWS to handle the data. 
 The main goal of the project is to create a website where users can play various fun games to test/improve their English. 
 The problem my website attempts to solve is that many language-learning sites are boring, and don’t allow the user to easily pick and choose what type of learning they want to focus on. For example, Duolingo just presents all users with the same generic fill-in-the-blank slides that they need to click through endlessly. A site where users can choose what type of challenge / what topic they want to focus on gives them greater flexibility and encourages them to keep practicing English (and to hone in on their weak spots). 
 
@@ -43,6 +44,8 @@ Users should be able to seamlessly sign up, log in, choose games, choose profici
 
 •	Game console: a grid of clickable games tiles 
 
+•	Scoreboard: a banner at the top that shows the user's current points 
+
 •	Game info pop-up menu: after clicking a game tile, the game info menu pops up on the right side of the screen, displaying info about the game like name, description, and playable proficiency levels. It should also have a “Proceed” button.
 
 •	Pre-game screen: after clicking “Proceed” in the game info menu, the user is taken to the pre-game screen, which shows them the instructions, and allows them to start the game. 
@@ -52,24 +55,37 @@ Users should be able to seamlessly sign up, log in, choose games, choose profici
 •	Post-game page: after the timer runs out, the user is presented with feedback, including score/points, wrong answers, and the option to play again. Ideally, this page would identify the user’s English weak spots (e.g. specific words, grammar patterns), and give them the option to add those weak spots to a “notes” page. However, in the scope of this project, I will probably not implement this feature. 
 
 
-*2.2. Additional Features*
+*2.3.2 Non-Functional Requirements*
 
-•	Notes page: as described above (under Post-game page), the user should be able to access their own personal notes page, which they can freely write/make edits in. Every time a user receives feedback on their performance in a game, they should have the option to add their incorrect answers (with the provided corrections) to their notes page for later review. 
+•	High performance/reliability throughout (no long loading components, no redundant fetching)
 
-•	A more advanced scoreboard: previously, I described how the website will keep track of a user’s wins/losses by updating their overall score and displaying that number in the scoreboard. However, it would be better to think of a more advanced system for conveying that information (e.g. in CodeWars, there are various “Kata” that represent different coding-proficiency levels, and those Kata are divided between different programming languages). 
 
-•	A “Demo” option: in the pre-game screen, the user would have the option to test out the game with a demo, which will not alter their score. This way, they’re prepared to start the game.
+*2.3.3 Technical Requirements*
 
-### Section 2 – Technology Stack
+HARDWARE: As a web app, there are not any hardware requirements for the user. It should not cause any spikes or significant elevation in memory.
 
-*3.1 Technology Stack*
+SOFTWARE: The web app will be developed using Javascript in the React + Vite framework. 
 
-•	AWS services: S3 (for storing relevant GIFs and images), DynamoDB (for storing user/game data), lambda (for password hashing), SNS (for sending confirmation email after sign up)
 
-•	Programming languages: JavaScript
+*2.3.4 Security Requirements*
 
-•	Frameworks: React + Vite
+•	Authentication: the system will use AWS Cognito for authenticating users. It will store user log in data inside a secure user pool. 
 
-•	Tools: Git
+•	Data Encryption: the data within the website is generally safe, read-only data, that does not require encryption. The only sensitive data is the user's login info, which is handled by AWS Cognito. 
 
-•	Libraries: (Not sure yet)
+
+*2.3.5 Estimates*
+
+TOTAL: 50 hours
+
+
+*2.3.6 Tracability Matrix*
+
+Not implemented yet.
+
+
+### Section 3 - System Architecture
+
+
+
+
