@@ -17,9 +17,13 @@ The app is based on the same concept I used in my final project for CSTP 1303 (I
 The main goal of the project is to create a website where users can play various fun games to test/improve their English. 
 The problem my website attempts to solve is that many language-learning sites are boring, and don’t allow the user to easily pick and choose what type of learning they want to focus on. For example, Duolingo just presents all users with the same generic fill-in-the-blank slides that they need to click through endlessly. A site where users can choose what type of challenge / what topic they want to focus on gives them greater flexibility and encourages them to keep practicing English (and to hone in on their weak spots). 
 
+<br>
+
 *1.3 Revision History*
 
 No revisions yet.
+
+<br>
 
 ### Section 2 - Overview
 
@@ -27,17 +31,21 @@ No revisions yet.
 
 The intended audience is for kids. The purpose of the app is to give them excercies that they can use to practice/improve their English at multiple levels (up to B1). 
 
+<br>
+
 *2.2 Scope*
 
 Games will very very simple multiple choice games (basically, fun quizzes with animated gifs). Each game (quiz) will be three questions long. I will implement at least 5 games, which will all be playable at three proficiency levels (A1, A2, B1). 
+
+<br>
 
 *2.3 Requirements*
 
 Users should be able to seamlessly sign up, log in, choose games, choose proficiency levels, play games, and receive (correct) points based on their answers. 
 
+<br>
 
 *2.3.1 Functional Requirements*
-
 
 •	Secure user signup/login/logout: a user can successfully create an account, sign in, and log out. Their password should be hashed, and the original plaintext should not be stored anywhere in the database. Two users should not be able to create accounts using the same email. The log in page should give relevant feedback to the user (e.g. “wrong password,” “that account does not exist”) based on their input. 
 
@@ -55,11 +63,13 @@ Users should be able to seamlessly sign up, log in, choose games, choose profici
 
 •	Post-game page: after the timer runs out, the user is presented with feedback, including score/points, wrong answers, and the option to play again. Ideally, this page would identify the user’s English weak spots (e.g. specific words, grammar patterns), and give them the option to add those weak spots to a “notes” page. However, in the scope of this project, I will probably not implement this feature. 
 
+<br>
 
 *2.3.2 Non-Functional Requirements*
 
 •	High performance/reliability throughout (no long loading components, no redundant fetching)
 
+<br>
 
 *2.3.3 Technical Requirements*
 
@@ -67,6 +77,7 @@ HARDWARE: As a web app, there are not any hardware requirements for the user. It
 
 SOFTWARE: The web app will be developed using Javascript in the React + Vite framework. 
 
+<br>
 
 *2.3.4 Security Requirements*
 
@@ -74,16 +85,19 @@ SOFTWARE: The web app will be developed using Javascript in the React + Vite fra
 
 •	Data Encryption: the data within the website is generally safe, read-only data, that does not require encryption. The only sensitive data is the user's login info, which is handled by AWS Cognito. 
 
+<br>
 
 *2.3.5 Estimates*
 
 TOTAL: 50 hours
 
+<br>
 
 *2.3.6 Tracability Matrix*
 
 Not implemented yet.
 
+<br>
 
 ### Section 3 - System Architecture
 
