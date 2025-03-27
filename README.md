@@ -160,10 +160,45 @@ Gameplay entity
 | proficiency | Foreign key #2 to link the gameplay to the user's selected proficiency level | String |
 | q1 | The first question | String |
 | q1 | Media (e.g. a gif) for the first question | String |
-| a1 | All the different answer options for this question - points are given when clicked on | [AnswerPair] |
+| a1 | {Text, Points} map to store the different answers for this question - points are given when text is clicked on | [AnswerPair] |
 | q2 | The first question | String |
 | q2 | Media (e.g. a gif) for the second question | String |
-| a2 | All the different answer options for this question - points are given when clicked on | [AnswerPair] |
+| a2 | {Text, Points} map to store the different answers for this question - points are given when text is clicked on | [AnswerPair] |
 | q3 | The first question | String |
 | q3 | Media (e.g. a gif) for the third question | String |
-| a3 | All the different answer options for this question - points are given when clicked on | [AnswerPair] |
+| a3 | {Text, Points} map to store the different answers for this question - points are given when text is clicked on | [AnswerPair] |
+
+
+### Section 5 - Data Design
+
+*5.1 Persistent/Static Data*
+
+Every User (in the Cognito User pool) has a corresponding UserInfo table in DynamoDB (which is how we give/fetch a user's earned points). 
+
+(Note: the UserInfo table is only created when a user logs in for the first time). 
+
+Every Game (in DynamoDB) has a corresponding Gamgeplay object for *every proficiency option described in the levels field*. 
+
+E.g.: if a Game has ["A1", "A2", "B1"] in the *levels* field, then there will be three Gameplay objects for that game. 
+
+The *gameid* field in Gameplay links it to the correct game. The *proficiency* links it to the user's selected proficiency level (which they select from a drop-down menu displaying all the options inside Game.levels). 
+
+<br>
+
+*5.1.1 Dataset*
+
+a) User (in Cognito User Pool)
+- Attributes: id (PK), email, password
+- Relationships: One-to-One with UserInfo
+
+b) UserInfo (in DynamoDB)
+- Attributes: email (PK), totalPoints
+- Relationships: One-to-One with User
+
+c) Game (in DynamoDB)
+- Attributes: id (PK), name, description, image, levels
+- Relationships: One-to-Many with Gameplay
+
+d) Gameplay (in DynamoDB)
+- Attributes: id (PK), gameid, proficiency, q1, q1media, a1, q2, q2media, a2, q3, q3media, a3
+- Relationships: One-to-One with Game
