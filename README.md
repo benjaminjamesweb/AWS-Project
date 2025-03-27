@@ -104,6 +104,10 @@ Not implemented yet.
 
 ### Section 3 - System Architecture
 
+*3.1 Overview*
 
+The main components within the app are UserInfo, Game, and Gameplay (as well as Users within the AWS User pool).
+
+When a new user signs up, their info is stored within the default User table inside a user pool. When they first log in, a UserInfo object is created to store that user's total points (it is initialized at 0). Games in the games arcade (on the main page) are populated from the Games entity. After clicking on a game, the user is taken to the focus page for that game, where they see more details (still from the Games entity). Once they select their desired proficiency level and click play, the Gameplay entity (for that game + level) is fetched to display the game content. Maps are used for each MCQ option, to store info for both the answer as well as the points that answer will earn the player. 
 
 
