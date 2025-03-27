@@ -116,5 +116,52 @@ When a new user signs up, their info is stored within the default User table ins
 
 ![Anglophoria drawio](https://github.com/user-attachments/assets/bf166033-b206-48cf-b416-d67da60813bc)
 
+<br> 
 
+### Section 4 - Data Dictionary
 
+User entity (fully-handled by AWS Cognito - stored in User pool)
+
+| Field | Notes | Type  |
+|----------|-----|------------|
+| id | Unique identifier assigned by AWS | String |
+| email | User's provided email | String |
+| password | Hashed password | String |
+
+<br>
+
+UserInfo entity
+
+| Field | Notes | Type  |
+|----------|-----|------------|
+| email | Primary key links this entity to a unique user in the user pool | String |
+| totalPoints | Stores this user's total earned points | Int |
+
+<br>
+
+Game entity
+
+| Field | Notes | Type  |
+|----------|-----|------------|
+| id | Typed by the programmer directly into DynamoDB | String |
+| name | The name of the game | String |
+| description | The description of the game | String |
+| image | The file name of the image (stored in the s3 bucket) | String |
+| levels | An array of all the playable proficiency levels for this game | [String] |
+
+Gameplay entity
+
+| Field | Notes | Type  |
+|----------|-----|------------|
+| id | Typed by the programmer directly into DynamoDB | String |
+| gameid | Foreign key #1 to link the gameplay to the right game | String |
+| proficiency | Foreign key #2 to link the gameplay to the user's selected proficiency level | String |
+| q1 | The first question | String |
+| q1 | Media (e.g. a gif) for the first question | String |
+| a1 | All the different answer options for this question - points are given when clicked on | [AnswerPair] |
+| q2 | The first question | String |
+| q2 | Media (e.g. a gif) for the first question | String |
+| a2 | All the different answer options for this question - points are given when clicked on | [AnswerPair] |
+| q3 | The first question | String |
+| q3 | Media (e.g. a gif) for the first question | String |
+| a3 | All the different answer options for this question - points are given when clicked on | [AnswerPair] |
