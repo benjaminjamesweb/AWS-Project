@@ -168,6 +168,7 @@ Gameplay entity
 | q3 | Media (e.g. a gif) for the third question | String |
 | a3 | {Text, Points} map to store the different answers for this question - points are given when text is clicked on | [AnswerPair] |
 
+<br>
 
 ### Section 5 - Data Design
 
@@ -202,3 +203,10 @@ c) Game (in DynamoDB)
 d) Gameplay (in DynamoDB)
 - Attributes: id (PK), gameid, proficiency, q1, q1media, a1, q2, q2media, a2, q3, q3media, a3
 - Relationships: One-to-One with Game
+
+<br>
+
+### Section 6 - User Interface Design
+
+*6.1 User Interface Design Overview*
+
