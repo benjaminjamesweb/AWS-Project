@@ -210,3 +210,62 @@ d) Gameplay (in DynamoDB)
 
 *6.1 User Interface Design Overview*
 
+Here is the current state of my UI. Clearly, it needs a lot of cleaning up - however, the basic flow / elements are shown. 
+
+Homepage UI
+
+![homepage](https://github.com/user-attachments/assets/046174ee-90af-461d-8492-c61424085ce4)
+
+<br>
+
+Game page (before level selection + play)
+![gamefocus](https://github.com/user-attachments/assets/4c99562e-bfcd-4213-b4d0-b42d92a75ca6)
+
+<br>
+
+Game page (after level selection + play)
+![gameplay](https://github.com/user-attachments/assets/d8752d57-3d6f-4223-b0e0-0abd814327bf)
+
+<br>
+
+Signup / Login page
+![auth](https://github.com/user-attachments/assets/a70318f8-5ba6-4583-9b27-5085fbd3a8a7)
+
+<br>
+
+### Section 7 - Testing
+
+Testing has not been implemented yet. 
+
+<br>
+
+### Section 8 - Monitoring
+
+Monitoring has not been implemented yet.
+
+<br>
+
+### Section 9 - Other Interfaces
+
+Not implemented yet.
+
+<br>
+
+### Section 10 - Extra Design Features / Outstanding Issues
+
+One idea I have, to improve the logic for the Gameplay class, is to create a struct for Question, which will contain the question name, media, and array of AnswerPairs. This would allow the programmer to easily add any number of questions to the gameplay object (instead of just 3). 
+
+<br>
+
+### Section 11 - References
+
+None yet.
+
+<br>
+
+### Section 12 - Glossary
+
+None yet.
+
+<br>
+
