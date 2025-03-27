@@ -149,6 +149,8 @@ Game entity
 | image | The file name of the image (stored in the s3 bucket) | String |
 | levels | An array of all the playable proficiency levels for this game | [String] |
 
+<br>
+
 Gameplay entity
 
 | Field | Notes | Type  |
@@ -160,8 +162,8 @@ Gameplay entity
 | q1 | Media (e.g. a gif) for the first question | String |
 | a1 | All the different answer options for this question - points are given when clicked on | [AnswerPair] |
 | q2 | The first question | String |
-| q2 | Media (e.g. a gif) for the first question | String |
+| q2 | Media (e.g. a gif) for the second question | String |
 | a2 | All the different answer options for this question - points are given when clicked on | [AnswerPair] |
 | q3 | The first question | String |
-| q3 | Media (e.g. a gif) for the first question | String |
+| q3 | Media (e.g. a gif) for the third question | String |
 | a3 | All the different answer options for this question - points are given when clicked on | [AnswerPair] |
