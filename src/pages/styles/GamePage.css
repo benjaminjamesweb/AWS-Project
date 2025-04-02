@@ -32,5 +32,15 @@
 }
 
 .pregame-div img{
-    width: 70%;
+    width: 50%;
+}
+
+.buttons-div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons-div button{
+    width: 40%;
+    border-radius: 12px;
 }

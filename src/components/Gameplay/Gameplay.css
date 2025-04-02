@@ -1,0 +1,56 @@
+.gameplay-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 40vw;
+    overflow-y: hidden;
+    text-align: left;
+}
+
+.gameplay-div-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    -ms-overflow-style: none; 
+    scrollbar-width: none;  
+}
+
+.answers-div {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    margin-bottom: 100px;
+}
+
+
+.fade {
+    opacity: 1;
+    transition: opacity 0.4s ease;
+  }
+  
+  .fade-out {
+    opacity: 0;
+  }
+  
+  .fade-in {
+    opacity: 1;
+  }
+
+  .result-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+  }
+
+  .buttons-div {
+    width: 100%;
+  }
+
+  .buttons-div button {
+    width: 80%;
+    margin: 20px;
+  }

@@ -1,33 +1,19 @@
 import React from 'react';
 import './Header.css';
-import { usePoints } from '../../contexts/PointsContext'; // 👈 import usePoints
+import { usePoints } from '../../contexts/PointsContext'; 
+import { useNavigate } from 'react-router-dom';
 
 const Header = ({ email, logout }) => {
-  const { points, setPoints, loadingPoints } = usePoints();
+  const { points, loadingPoints } = usePoints();
+  const navigate = useNavigate()
 
-  if (loadingPoints) return <p>Loading points...</p>;
+  if (loadingPoints) return <p>Loading...</p>;
 
   return (
     <div className='header-div'>
-      <h2>Your points: {points}</h2>
+      <h2>Points: {points}</h2>
 
-      <button
-        onClick={() => {
-          setPoints(points + 1); // this will update state + DB via context
-        }}
-      >
-        Click to add points
-      </button>
-
-      <button
-        onClick={() => {
-          setPoints(points - 1);
-        }}
-      >
-        Click to subtract points
-      </button>
-
-      <h1>Anglophoria</h1>
+      <h1 className="anglophoria-logo" onClick={() => navigate('/')}>Anglophoria</h1>
 
       <button onClick={logout}>Sign out of {email}</button>
     </div>

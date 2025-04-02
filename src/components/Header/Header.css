@@ -19,3 +19,8 @@
 .header-div button:hover{
     background-color: rgb(58, 51, 109);
 }
+
+.anglophoria-logo:hover {
+    cursor: pointer;
+    color: green
+}

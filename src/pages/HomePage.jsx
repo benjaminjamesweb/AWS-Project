@@ -10,8 +10,6 @@ import { createUserInfo } from '../graphql/mutations';
 
 const HomePage = ({ email, logout }) => {
     const [games, setGames] = useState([]);
-    // const [points, setPoints] = useState([])
-
 
     useEffect(() => {
         const fetchGames = async () => {
