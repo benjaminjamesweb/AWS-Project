@@ -54,3 +54,8 @@
     width: 80%;
     margin: 20px;
   }
+
+  .question-image {
+    max-height: 50%;
+    object-fit: contain;
+  }

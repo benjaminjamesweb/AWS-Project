@@ -53,6 +53,7 @@ const Gameplay = ({ gameplay }) => {
         <div className={`gameplay-div-2 fade ${isFading ? 'fade-out' : 'fade-in'}`}>
           <h2>{questions[currentQuestion].text}</h2>
           <img
+          className='question-image'
             src={`${s3URL}${questions[currentQuestion].media}`}
             alt={`Q${currentQuestion + 1} media`}
           />
