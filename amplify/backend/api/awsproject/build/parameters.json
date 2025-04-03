@@ -2,6 +2,7 @@
     "AppSyncApiName": "awsproject",
     "DynamoDBBillingMode": "PAY_PER_REQUEST",
     "DynamoDBEnableServerSideEncryption": false,
+    "AuthModeLastUpdated": "2025-03-21T20:07:16.368Z",
     "AuthCognitoUserPoolId": {
         "Fn::GetAtt": [
             "authawsproject3584bfb3",
