@@ -19,7 +19,11 @@ Anglophoria is a website where users can play various fun games to test/improve 
 
 *1.3 Revision History*
 
-No revisions yet.
+| Date | Comment | Author  |
+|----------|-----|------------|
+| 3/21 | Added base functional code and design document  | Ben |
+| 1/1 | Improved app logic (separate slides for each game question) | Ben |
+| 1/9 | Finalized app, deployed with Amplify  | Ben |
 
 <br>
 
@@ -98,7 +102,14 @@ Users should be able to seamlessly sign up, log in, choose games, choose profici
 
 *2.3.6 Tracability Matrix*
 
-Not implemented yet.
+| SRS Requirement | SDD Module |
+|----------|-----|
+| R1 | Implemented  |
+| R2 | Implemented  |
+| R3 | Implemented  |
+| R4 | Implemented  |
+| R5 | Implemented  |
+| R6 | Implemented  |
 
 <br>
 
@@ -114,9 +125,16 @@ When a new user signs up, their info is stored within the default User table ins
 
 *3.2 Architectural Diagram*
 
+Class Diagram
+
 ![Anglophoria drawio](https://github.com/user-attachments/assets/bf166033-b206-48cf-b416-d67da60813bc)
 
-<br> 
+<br>
+
+AWS High Level Diagram
+
+![doc2](https://github.com/user-attachments/assets/86bc53d5-b0b1-45de-918b-a0b0ba13d00a)
+
 
 ### Section 4 - Data Dictionary
 
