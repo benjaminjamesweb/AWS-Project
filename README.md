@@ -109,7 +109,7 @@ Users should be able to seamlessly sign up, log in, choose games, choose profici
 | R3 | Implemented  |
 | R4 | Implemented  |
 | R5 | Implemented  |
-| R6 | Implemented  |
+| R6 | Implemented (although the only feedback is points earned, nothing deeper) |
 
 <br>
 
