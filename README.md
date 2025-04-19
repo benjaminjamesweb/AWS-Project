@@ -261,7 +261,8 @@ Testing has not been implemented yet.
 
 I added several Cloudwatch alerts to my project to track information related to fetch requests, user log ins, and s3 bucket size.
 
-![Screenshot 2025-02-13 150251](https://github.com/user-attachments/assets/526039c0-8a71-4aef-82ca-38b4a30f2ebd)
+![Screenshot 2025-04-19 110719](https://github.com/user-attachments/assets/f351f11c-8b03-4bb8-9b4f-eb204a3d72a1)
+
 
 
 <br>
